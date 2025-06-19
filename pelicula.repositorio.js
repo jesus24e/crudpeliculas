@@ -4,14 +4,17 @@ const { MongoClient } = require("mongodb");
 const uri = "mongodb+srv://jesusrodriguez65:5OdSXqptiAeVMkZ2@cluster0.3qkevww.mongodb.net/";
 //const uri = process.env.MONGO_URI
 const client = new MongoClient(uri);
-const dataBase = "Test";
+const dataBase = "Pruebas";
 const collectionName = "peliculas";
 
 async function getCollectionAsync() {
-  console.log("MONGO_URI: ", process.env.MONGO_URI)
+  console.log("MONGO_URI: ", process.env.MONGO_URI);
   await client.connect();
   const db = client.db(dataBase);
-  const collection = db.collection(collectionName);}
+  const collection = db.collection(collectionName);
+
+  return collection;
+}
 
 async function obtenerTodos() {
   const collection = await getCollectionAsync();
@@ -47,8 +50,8 @@ async function agregar(pelicula) {
 async function actualizar(id, pelicula) {
   const collection = await getCollectionAsync();
   const query = { id: Number(id) };
-  await collection.updateOne(query, {$set: pelicula});
-  }
+  await collection.updateOne(query, { $set: pelicula });
+}
 
 module.exports = {
   obtenerPorId,
