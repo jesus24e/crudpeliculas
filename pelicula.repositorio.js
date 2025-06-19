@@ -1,11 +1,12 @@
 //Configuración de base de datos
 //require('dotenv').config();
 const { MongoClient } = require("mongodb");
-const uri = "mongodb+srv://jesusrodriguez65:5OdSXqptiAeVMkZ2@cluster0.3qkevww.mongodb.net/";
+const uri = 'mongodb+srv://jesusrodriguez65:5OdSXqptiAeVMkZ2@cluster0.3qkevww.mongodb.net/';
+
 //const uri = process.env.MONGO_URI
 const client = new MongoClient(uri);
-const dataBase = "Pruebas";
-const collectionName = "peliculas";
+const dataBase = "pruebas";
+const collectionName = "Peliculas";
 
 async function getCollectionAsync() {
   console.log("MONGO_URI: ", process.env.MONGO_URI);
